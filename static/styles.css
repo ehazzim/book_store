@@ -180,3 +180,11 @@ body {
     color: var(--neon-pink);
     text-shadow: 0 0 8px rgba(255, 42, 133, 0.6);
 }
+
+.card-meta {
+    margin-top: 1rem;
+    font-size: 0.78rem;
+    color: var(--neon-cyan);
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+}

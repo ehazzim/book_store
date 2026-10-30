@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AceReads // Book Catalog</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="brand">✦ AceReads</div>
+        <ul class="nav-links">
+            <li class="nav-item">
+                <a href="/">Dashboard</a>
+            </li>
+            <li class="nav-item active">
+                <a href="/books">Book Catalog</a>
+            </li>
+            <li class="nav-item">
+                <a href="/quotes">Quotes Archive</a>
+            </li>
+            <li class="nav-item">
+                <a href="/signup">User Access</a>
+            </li>
+            <li class="nav-item">
+                <a href="/team">Team Grid</a>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Main Content View -->
+    <main class="main-content">
+        <header class="header">
+            <h1>Book Catalog</h1>
+            <p>Querying real-time records from PostgreSQL.</p>
+        </header>
+
+        <section class="card-grid">
+            {% for book in books %}
+                <div class="card">
+                    <h3><span>📖</span> {{ book.title }}</h3>
+                    <p><strong>Author:</strong> {{ book.author }}</p>
+                    <p class="card-meta">Database ID: #{{ book.id }}</p>
+                </div>
+            {% else %}
+                <div class="card">
+                    <h3>No Books Found</h3>
+                    <p>The books database table is currently empty.</p>
+                </div>
+            {% endfor %}
+        </section>
+    </main>
+
+</body>
+</html>
