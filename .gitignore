@@ -1,7 +1,7 @@
 # Python Virtual Environments
+book_store_venv/
 myvenv/
 venv/
-ENV/
 .venv/
 
 # Pytest & Cache
