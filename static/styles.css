@@ -188,3 +188,79 @@ body {
     letter-spacing: 0.05em;
     opacity: 0.8;
 }
+
+/* Form Container & Cyber Controls */
+.form-container {
+    max-width: 500px;
+}
+
+.cyber-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--neon-cyan);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.85rem 1rem;
+    background: rgba(10, 8, 19, 0.8);
+    border: 1px solid var(--border-glow);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+.form-group input:focus {
+    border-color: var(--neon-pink);
+    box-shadow: 0 0 12px rgba(255, 42, 133, 0.3);
+}
+
+.cyber-button {
+    width: 100%;
+    padding: 0.85rem;
+    margin-top: 0.5rem;
+    background: linear-gradient(135deg, rgba(255, 42, 133, 0.3), rgba(157, 78, 221, 0.3));
+    color: #ffffff;
+    border: 1px solid var(--neon-pink);
+    border-radius: 8px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 0 15px rgba(255, 42, 133, 0.2);
+}
+
+.cyber-button:hover {
+    background: var(--neon-pink);
+    box-shadow: 0 0 25px rgba(255, 42, 133, 0.6);
+    transform: translateY(-2px);
+}
+
+.alert-error {
+    background: rgba(255, 42, 133, 0.15);
+    border: 1px solid var(--neon-pink);
+    color: var(--neon-pink);
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    max-width: 500px;
+    font-size: 0.9rem;
+}

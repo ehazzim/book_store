@@ -1,6 +1,8 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request, redirect, url_for
 from lib.database_connection import DatabaseConnection
 from lib.book_repository import BookRepository
+from lib.user import User
+from lib.user_repository import UserRepository
 
 # Instantiate Flask web app object
 app = Flask(__name__)
@@ -17,7 +19,7 @@ def index():
 def get_books():
     connection = DatabaseConnection()
     connection.connect()
-    
+
     repository = BookRepository(connection)
     books = repository.all()
     
@@ -32,6 +34,30 @@ def get_quotes():
 @app.route("/signup", methods=["GET"])
 def get_signup():
     return render_template("signup_form.html")
+
+@app.route("/signup", methods=["POST"])
+def post_signup():
+    username = request.form.get("username")
+    password = request.form.get("password")
+
+    if not username or not password:
+        return render_template("signup_form.html", error="Username and password are required."), 400
+
+    connection = DatabaseConnection()
+    connection.connect()
+    
+    repository = UserRepository(connection)
+
+    # Check if username is already taken
+    existing_user = repository.find_by_username(username)
+    if existing_user:
+        return render_template("signup_form.html", error="Username already registered."), 400
+
+    # Create and persist new user
+    new_user = User(None, username, password)
+    repository.create(new_user)
+
+    return redirect(url_for("index"))
 
 # /team
 @app.route("/team", methods=["GET"])

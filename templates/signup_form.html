@@ -1,1 +1,64 @@
-<h1>work in progress!</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AceReads // User Access</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+        <div class="brand">✦ AceReads</div>
+        <ul class="nav-links">
+            <li class="nav-item">
+                <a href="/">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a href="/books">Book Catalog</a>
+            </li>
+            <li class="nav-item">
+                <a href="/quotes">Quotes Archive</a>
+            </li>
+            <li class="nav-item active">
+                <a href="/signup">User Access</a>
+            </li>
+            <li class="nav-item">
+                <a href="/team">Team Grid</a>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Main Content View -->
+    <main class="main-content">
+        <header class="header">
+            <h1>User Access Terminal</h1>
+            <p>Initialize a new identity record in PostgreSQL.</p>
+        </header>
+
+        {% if error %}
+            <div class="alert-error">
+                ⚠️ {{ error }}
+            </div>
+        {% endif %}
+
+        <div class="form-container card">
+            <form action="/signup" method="POST" class="cyber-form">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="e.g. cyber_runner" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Security Key</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••••••" required>
+                </div>
+
+                <button type="submit" class="cyber-button">Initialize User</button>
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>
